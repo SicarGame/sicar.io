@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sicaro</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- Import maps polyfill -->
+    <!-- Remove this when import maps will be widely supported -->
+    <script
+      async
+      src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"
+    ></script>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "postprocessing": "https://cdn.jsdelivr.net/npm/postprocessing@6.32.1/+esm",
+          "three": "https://threejs.org/build/three.module.js",
+          "three/addons/": "https://threejs.org/examples/jsm/"
+        }
+      }
+    </script>
+
+    <div class="viewport"></div>
+
+    <div class="label">
+      <div class="title-parent">
+        <h1 class="title"></h1>
+        <span class="blinker">_</span>
+      </div>
+      <div class="video-parent">
+        <video class="video" autoplay muted loop playsinline>
+          <source src="./assets/showcase.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="links">
+        <div
+          onclick="window.open('https://www.youtube.com/@SicaroGame')"
+          class="link"
+        >
+          <img src="./assets/youtube.png" alt="Youtube" />
+        </div>
+        <div
+          onclick="window.open('https://github.com/SicaroGame')"
+          class="link"
+        >
+          <img src="./assets/github.png" alt="Github" />
+        </div>
+        <div
+          onclick="window.open('https://twitter.com/SicaroGame')"
+          class="link"
+        >
+          <img src="./assets/twitter.png" alt="Twitter" />
+        </div>
+        <div
+          onclick="window.open('https://www.tiktok.com/@sicarogame')"
+          class="link"
+        >
+          <img src="./assets/tiktok.png" alt="TikTok" />
+        </div>
+        <div
+          onclick="window.open('https://www.instagram.com/sicarogame/')"
+          class="link"
+        >
+          <img src="./assets/instagram.png" alt="Instagram" />
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./js/index.js"></script>
+  </body>
+</html>

@@ -2,79 +2,123 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Sicaro</title>
+    <title>Sicaro - Coming soon</title>
+    <!-- Viewport meta tag for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Description meta tag -->
+    <meta
+      name="description"
+      content="Browser Multiplayer FPS game // Game engine"
+    />
+
+    <!-- Keywords meta tag  -->
+    <meta
+      name="keywords"
+      content="Sicaro, FPS game, browser game, game engine, WebGL, WebSocket"
+    />
+
+    <!-- Author meta tag -->
+    <meta name="author" content="Hoodgail Benjamin" />
+
+    <!-- Open Graph meta tags for social media sharing -->
+    <meta property="og:title" content="Sicaro - Coming soon" />
+    <meta
+      property="og:description"
+      content="Browser Multiplayer FPS game // Game engine"
+    />
+    <meta property="og:image" content="https://sicaro.io/assets/image.png" />
+    <meta property="og:url" content="https://sicaro.io" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card meta tags for Twitter sharing-->
+    <meta name="twitter:card" content="https://sicaro.io/assets/image.png" />
+    <meta name="twitter:title" content="Sicaro - Coming soon" />
+    <meta
+      name="twitter:description"
+      content="Browser Multiplayer FPS game // Game engine"
+    />
+    <meta name="twitter:image" content="https://sicaro.io/assets/image.png" />
+
+    <!-- Favicon link -->
+    <link
+      rel="icon"
+      href="https://sicaro.io/assets/image.png"
+      type="image/png"
+    />
+
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <!-- Import maps polyfill -->
-    <!-- Remove this when import maps will be widely supported -->
-    <script
-      async
-      src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"
-    ></script>
-
-    <script type="importmap">
-      {
-        "imports": {
-          "postprocessing": "https://cdn.jsdelivr.net/npm/postprocessing@6.32.1/+esm",
-          "three": "https://threejs.org/build/three.module.js",
-          "three/addons/": "https://threejs.org/examples/jsm/"
-        }
-      }
-    </script>
-
-    <div class="viewport"></div>
-
-    <div class="label">
-      <div class="title-parent">
-        <h1 class="title"></h1>
-        <span class="blinker">_</span>
+    <div class="logo">
+      <img src="./assets/logo.png" alt="Sicaro" />
+    </div>
+    <div id="root">
+      <div class="showcase">
+        <div class="fade"></div>
+        <video
+          muted
+          autoplay
+          loop
+          playsinline
+          webkit-playsinline
+          src="/assets/showcase.mp4"
+        ></video>
       </div>
-      <div class="video-parent">
-        <video class="video" autoplay muted loop playsinline>
-          <source src="./assets/showcase.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <div class="links">
-        <div
-          onclick="window.open('https://www.youtube.com/@SicaroGame')"
-          class="link"
-        >
-          <img src="./assets/youtube.png" alt="Youtube" />
-        </div>
-        <div
-          onclick="window.open('https://github.com/SicaroGame')"
-          class="link"
-        >
-          <img src="./assets/github.png" alt="Github" />
-        </div>
-        <div
-          onclick="window.open('https://twitter.com/SicaroGame')"
-          class="link"
-        >
-          <img src="./assets/twitter.png" alt="Twitter" />
-        </div>
-        <div
-          onclick="window.open('https://www.tiktok.com/@sicarogame')"
-          class="link"
-        >
-          <img src="./assets/tiktok.png" alt="TikTok" />
-        </div>
-        <div
-          onclick="window.open('https://www.instagram.com/sicarogame/')"
-          class="link"
-        >
-          <img src="./assets/instagram.png" alt="Instagram" />
-        </div>
-        <div
-          onclick="window.open('https://discord.gg/MpygB8FVyQ')"
-          class="link"
-        >
-          <img src="./assets/discord.png" alt="Discord" />
-        </div>
+      <div class="head">
+        <title-entry>
+          <div class="text">
+            <span>Sicaro</span>
+          </div>
+
+          <div class="play-container">
+            <button class="play">
+              <i class="fi fi-sr-play"></i>
+              <span>Play</span>
+            </button>
+            <span>Coming soon</span>
+          </div>
+        </title-entry>
+        <description-entry>
+          <div class="text title">
+            <span> Browser Multiplayer FPS game // Game engine </span>
+          </div>
+          <div class="text">
+            <span>
+              Sicaro is a multiplayer FPS game running in the browser. It is
+              powered by a custom game engine built on top of WebGL and
+              WebSocket.
+            </span>
+          </div>
+          <div class="buttons">
+            <button onclick="window.open('https:\/\/discord.gg/MpygB8FVyQ')">
+              <i class="fi fi-brands-discord"></i>
+              <span>Join Discord</span>
+            </button>
+            <button onclick="window.open('https:\/\/github.com/SicaroGame')">
+              <i class="fi fi-brands-github"></i>
+            </button>
+            <button onclick="window.open('https:\/\/twitter.com/SicaroGame')">
+              <i class="fi fi-brands-twitter"></i>
+            </button>
+            <button
+              onclick="window.open('https:\/\/www.tiktok.com/@sicarogame')"
+            >
+              <i class="fi fi-brands-tik-tok"></i>
+            </button>
+            <button
+              onclick="window.open('https:\/\/www.instagram.com/sicarogame/')"
+            >
+              <i class="fi fi-brands-instagram"></i>
+            </button>
+            <button
+              onclick="window.open('https:\/\/www.youtube.com/@SicaroGame')"
+            >
+              <i class="fi fi-brands-youtube"></i>
+            </button>
+          </div>
+        </description-entry>
       </div>
     </div>
-
-    <script type="module" src="./js/index.js"></script>
   </body>
 </html>

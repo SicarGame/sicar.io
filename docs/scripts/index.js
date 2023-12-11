@@ -1,10 +1,13 @@
-const social = "http://localhost:5174/";
-const social_api = "http://localhost:6456/";
+const social = "https://social.sicaro.io";
+const social_api = "https://social-server.sicaro.io";
 
 const searchParams = new URLSearchParams(location.search);
 
 if (searchParams.has("token")) localStorage.setItem("token", searchParams.get("token"));
 if (searchParams.has("token_expires")) localStorage.setItem("token_expires", searchParams.get("token_expires"));
+
+// Remove search from URL
+history.replaceState({}, document.title, location.pathname);
 
 const token = localStorage.getItem("token");
 

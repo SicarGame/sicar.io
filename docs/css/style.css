@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700;6..12,800;6..12,1000&display=swap');
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css');
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-brands/css/uicons-brands.css');
+@import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css');
 
 :root {
      --background-fill: rgb(61, 46, 45);
@@ -124,7 +125,7 @@ title-entry {
      gap: 1.5vh;
 }
 
-button:not(.play) {
+.head button:not(.play) {
      background: linear-gradient(45deg, #f54536, #ff9090);
      font-size: 1.5vh;
      padding: 1vh;
@@ -133,7 +134,7 @@ button:not(.play) {
      font-weight: 800;
      border: none;
      text-align: left;
-     transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 2.275);
+
      cursor: pointer;
      color: white;
      border-radius: 1vh;
@@ -154,6 +155,8 @@ button:not(.play) {
      i {
           font-size: 2vh;
      }
+
+     transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 2.275);
 
      &:hover {
           transform: scale(1.1);
@@ -213,4 +216,139 @@ button:not(.play) {
           width: 100%;
           object-fit: contain;
      }
+}
+
+.header {
+     position: absolute;
+     left: 0;
+     top: 0;
+     margin: 5vh;
+     display: flex;
+     z-index: 5;
+     gap: 2vh;
+
+
+     .buttons {
+          display: flex;
+          flex-direction: column;
+          padding: 2vh;
+          gap: 0vh;
+
+          button {
+               border: none;
+               background: none;
+               color: white;
+               font-size: 2vh;
+               cursor: pointer;
+               display: flex;
+               align-items: center;
+               gap: 1vh;
+               padding: 1.5vh;
+               border-radius: 1vh;
+
+               i {
+                    font-size: 1.5vh;
+                    width: fit-content;
+                    height: fit-content;
+                    display: flex;
+                    margin-top: auto;
+                    margin-bottom: auto;
+               }
+
+               &:hover {
+                    color: #ff8378;
+                    background: #ff83782c;
+               }
+          }
+     }
+}
+
+.profile {
+
+     height: 6vh;
+     width: 6vh;
+
+     display: flex;
+     /* background: linear-gradient(45deg, #f54536, #ff9090); */
+     border: solid 3px #f54536;
+     /* background: #ff90902c; */
+     border-radius: 50vh;
+     justify-content: center;
+     z-index: 2;
+     align-items: center;
+     box-shadow: 0px 8px 14px #f545368a;
+     cursor: pointer;
+
+     i {
+          font-size: 2vh;
+          color: #ff8378;
+          display: flex;
+          height: fit-content;
+          width: fit-content;
+          text-shadow: 0px 8px 14px #f54636d7;
+     }
+
+
+     transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 2.275);
+
+     &:hover {
+          transform: scale(1.1);
+          border-radius: 2vh;
+     }
+}
+
+profile-entry.focus {
+     opacity: 1;
+     pointer-events: all;
+}
+
+profile-entry {
+     width: 30vh;
+     background: #1a1414;
+     height: fit-content;
+     border-radius: 1vh;
+     box-shadow: 0px 8px 17px #00000063;
+     opacity: 0;
+     transition: opacity 0.2s linear;
+     pointer-events: none;
+
+     .username {
+          padding: 2vh;
+          border-bottom: solid 1px #3d2e2d;
+          font-weight: bold;
+          font-size: 2vh;
+          display: flex;
+
+          .level {
+               display: flex;
+               margin-left: auto;
+
+               >* {
+                    margin-top: auto;
+                    margin-bottom: auto;
+
+               }
+
+               .label {
+                    font-size: 1vh;
+                    font-weight: 800;
+                    color: white;
+                    margin-right: 1vh;
+                    background: #ff4937;
+                    padding: 0.5vh;
+                    padding-left: 1vh;
+                    padding-right: 1vh;
+                    border-radius: 59vh;
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                    box-shadow: 0px 4px 12px #f545368a;
+               }
+          }
+     }
+}
+
+button[disabled] {
+     opacity: 0.5;
+     cursor: not-allowed !important
 }

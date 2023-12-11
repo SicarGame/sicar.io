@@ -53,6 +53,35 @@
     <div class="logo">
       <img src="./assets/logo.png" alt="Sicaro" />
     </div>
+
+    <script></script>
+
+    <div class="header">
+      <div class="profile" onclick="profileEntry.classList.toggle('focus')">
+        <i class="fi fi-sr-user"></i>
+      </div>
+
+      <profile-entry id="profileEntry">
+        <div class="username">
+          <span>Guest</span>
+          <div class="level">
+            <span class="label">LVL</span>
+            <span>0</span>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button disabled class="login">
+            <i class="fi fi-br-sign-in-alt"></i>
+            <span>Login</span>
+          </button>
+          <button disabled class="logout">
+            <i class="fi fi-br-sign-out-alt"></i>
+            <span>Logout</span>
+          </button>
+        </div>
+      </profile-entry>
+    </div>
     <div id="root">
       <div class="showcase">
         <div class="fade"></div>

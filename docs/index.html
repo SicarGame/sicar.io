@@ -63,7 +63,7 @@
 
       <profile-entry id="profileEntry">
         <div class="username">
-          <span>Guest</span>
+          <span id="username">@Guest</span>
           <div class="level">
             <span class="label">LVL</span>
             <span>0</span>
@@ -71,11 +71,11 @@
         </div>
 
         <div class="buttons">
-          <button disabled class="login">
+          <button id="login" class="login" onclick="oauth()">
             <i class="fi fi-br-sign-in-alt"></i>
             <span>Login</span>
           </button>
-          <button disabled class="logout">
+          <button id="logout" disabled class="logout" onclick="removeAccount()">
             <i class="fi fi-br-sign-out-alt"></i>
             <span>Logout</span>
           </button>
@@ -149,5 +149,7 @@
         </description-entry>
       </div>
     </div>
+
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

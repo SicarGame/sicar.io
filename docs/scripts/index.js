@@ -45,18 +45,27 @@ async function user() {
 
      src.pathname = "/api/users/me";
 
-     const response = await fetch(src, {
-          headers: {
-               Authorization: `Bearer ${token}`
-          }
-     });
+     try {
 
-     const data = await response.json();
+          const response = await fetch(src, {
+               headers: {
+                    Authorization: `Bearer ${token}`
+               }
+          });
 
-     username.innerText = "@" + data.username;
+          const data = await response.json();
 
-     login.setAttribute("disabled", "true");
-     logout.removeAttribute("disabled");
+          username.innerText = "@" + data.username;
+
+          login.setAttribute("disabled", "true");
+          logout.removeAttribute("disabled");
+
+     } catch (error) {
+
+          localStorage.removeItem("token");
+          localStorage.removeItem("token_expires");
+
+     }
 }
 
 async function removeAccount() {

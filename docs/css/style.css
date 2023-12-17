@@ -352,3 +352,30 @@ button[disabled] {
      opacity: 0.5;
      cursor: not-allowed !important
 }
+
+@media (max-width: 500px) {
+
+     .head {
+          margin: 0;
+          padding: 5vh;
+          margin-top: 13vh;
+          width: -webkit-fill-available;
+          overflow: hidden;
+          gap: 7vh;
+     }
+
+     title-entry {
+
+          .text {
+               font-size: 9vh;
+          }
+     }
+
+     .play-container {
+          flex-direction: column;
+     }
+
+     .buttons {
+          flex-wrap: wrap;
+     }
+}

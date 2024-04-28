@@ -85,14 +85,15 @@
     <div id="root">
       <div class="showcase">
         <div class="fade"></div>
-        <video
+        <!-- <video
           muted
           autoplay
           loop
           playsinline
           webkit-playsinline
           src="/assets/showcase.mp4"
-        ></video>
+        ></video> -->
+        <img src="./assets/forest.png" alt="Sicaro" />
       </div>
       <div class="head">
         <title-entry>
@@ -101,11 +102,19 @@
           </div>
 
           <div class="play-container">
-            <button class="play">
-              <i class="fi fi-sr-play"></i>
-              <span>Play</span>
+            <button
+              onclick="input_container.classList.toggle('apear')"
+              class="play"
+            >
+              <i class="fi fi-br-envelope"></i>
+              <span>Join waitlist</span>
             </button>
-            <span>Coming soon</span>
+            <div class="input" id="input_container">
+              <input id="email" type="email" placeholder="Enter your email" />
+              <button id="submit" class="submit" onclick="waitlist()">
+                Submit
+              </button>
+            </div>
           </div>
         </title-entry>
         <description-entry>

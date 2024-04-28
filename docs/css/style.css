@@ -5,7 +5,10 @@
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css');
 
 :root {
-     --background-fill: rgb(61, 46, 45);
+     --background-fill: #0f364a;
+     --theme-color: #1d4e68;
+     --theme-color-light: #5c94b2;
+     --shadow-color: #36b5f530;
 }
 
 body {
@@ -40,7 +43,7 @@ body {
 
 .play-container {
      display: flex;
-     gap: 3vh;
+     /* gap: 3vh; */
 
      >span {
           display: flex;
@@ -50,10 +53,63 @@ body {
           margin-bottom: auto;
           font-size: 3vh;
           font-weight: 800;
-          background: -webkit-linear-gradient(330deg, #f54536, #ffb6b6);
+          background: -webkit-linear-gradient(330deg, var(--theme-color), var(--theme-color-light));
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
+     }
+
+     .input {
+          height: fit-content;
+          margin-top: auto;
+          margin-bottom: auto;
+          display: flex;
+          gap: 1vh;
+          background: #1d4e68;
+          border-radius: 50vh;
+          transform: translateX(-10vh);
+          padding-left: 2vh;
+          box-shadow: 0px 8px 14px var(--shadow-color);
+          border: solid 2px var(--theme-color-light);
+          opacity: 0;
+          transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 2.275), opacity 0.1s linear;
+          position: relative;
+
+          &.apear {
+               opacity: 1;
+               transform: translateX(-3vh);
+          }
+
+          .submit {
+               border-radius: 50vh;
+               height: 3vh;
+               margin-right: 0.7vh;
+               background: white;
+               color: black;
+               margin-top: auto;
+               margin-bottom: auto;
+               font-family: 'Nunito Sans', sans-serif;
+
+               &:hover {
+                    transform: scale(0.95);
+               }
+          }
+
+          input {
+               background: transparent;
+               border: none;
+               padding: 1.4vh;
+               outline: none;
+               color: white;
+
+               &::placeholder {
+                    color: var(--theme-color-light);
+                    font-weight: bold;
+                    opacity: 1;
+                    font-family: 'Nunito Sans', sans-serif;
+                    /* Firefox */
+               }
+          }
      }
 }
 
@@ -90,7 +146,7 @@ title-entry {
 }
 
 .play {
-     background: linear-gradient(45deg, #f54536, #ff9090);
+     background: linear-gradient(45deg, var(--theme-color), var(--theme-color-light));
      font-size: 3vh;
      padding: 2vh;
      padding-left: 3vh;
@@ -106,7 +162,8 @@ title-entry {
      align-items: center;
      gap: 1.5vh;
      width: fit-content;
-     box-shadow: 0px 8px 14px #f545368a;
+     z-index: 1;
+     box-shadow: 0px 8px 14px var(--shadow-color);
 
      >* {
           height: fit-content;
@@ -116,7 +173,7 @@ title-entry {
      }
 
      &:hover {
-          transform: scale(1.1);
+          transform: scale(1.03);
      }
 }
 
@@ -126,7 +183,7 @@ title-entry {
 }
 
 .head button:not(.play) {
-     background: linear-gradient(45deg, #f54536, #ff9090);
+     background: linear-gradient(45deg, var(--theme-color), var(--theme-color-light));
      font-size: 1.5vh;
      padding: 1vh;
      padding-left: 2vh;
@@ -142,7 +199,7 @@ title-entry {
      align-items: center;
      gap: 1.5vh;
      width: fit-content;
-     box-shadow: 0px 8px 14px #f545368a;
+     box-shadow: 0px 8px 14px var(--shadow-color);
 
      >* {
           height: fit-content;
@@ -181,7 +238,8 @@ title-entry {
           background: linear-gradient(90deg, var(--background-fill) 15%, rgba(0, 0, 0, 0) 100%);
      }
 
-     video {
+     video,
+     img {
           width: 100%;
           height: 100%;
           object-fit: cover;
@@ -199,7 +257,7 @@ title-entry {
      border-radius: 50%;
      justify-content: center;
      align-items: center;
-     box-shadow: 0px 6px 11px #00000099, inset 0px -7px 13px 3px #f5453642;
+     box-shadow: 0px 6px 11px #00000099, inset 0px -7px 13px 3px #3645f542;
 }
 
 .logo {
@@ -256,8 +314,8 @@ title-entry {
                }
 
                &:hover {
-                    color: #ff8378;
-                    background: #ff83782c;
+                    color: #78fffa;
+                    background: #78f8ff2c;
                }
           }
      }
@@ -270,22 +328,22 @@ title-entry {
 
      display: flex;
      /* background: linear-gradient(45deg, #f54536, #ff9090); */
-     border: solid 3px #f54536;
+     border: solid 3px var(--theme-color);
      /* background: #ff90902c; */
      border-radius: 50vh;
      justify-content: center;
      z-index: 2;
      align-items: center;
-     box-shadow: 0px 8px 14px #f545368a;
+     box-shadow: 0px 8px 14px var(--shadow-color);
      cursor: pointer;
 
      i {
           font-size: 2vh;
-          color: #ff8378;
+          color: var(--theme-color-light);
           display: flex;
           height: fit-content;
           width: fit-content;
-          text-shadow: 0px 8px 14px #f54636d7;
+          text-shadow: 0px 8px 14px var(--theme-color);
      }
 
 
@@ -304,7 +362,7 @@ profile-entry.focus {
 
 profile-entry {
      width: 30vh;
-     background: #1a1414;
+     background: #14191a;
      height: fit-content;
      border-radius: 1vh;
      box-shadow: 0px 8px 17px #00000063;
@@ -314,7 +372,7 @@ profile-entry {
 
      .username {
           padding: 2vh;
-          border-bottom: solid 1px #3d2e2d;
+          border-bottom: solid 1px #2d3d3c;
           font-weight: bold;
           font-size: 2vh;
           display: flex;
@@ -334,7 +392,7 @@ profile-entry {
                     font-weight: 800;
                     color: white;
                     margin-right: 1vh;
-                    background: #ff4937;
+                    background: var(--theme-color);
                     padding: 0.5vh;
                     padding-left: 1vh;
                     padding-right: 1vh;
@@ -342,7 +400,7 @@ profile-entry {
                     justify-content: center;
                     align-items: center;
                     display: flex;
-                    box-shadow: 0px 4px 12px #f545368a;
+                    box-shadow: 0px 4px 12px var(--shadow-color);
                }
           }
      }

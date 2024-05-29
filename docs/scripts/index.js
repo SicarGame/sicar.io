@@ -56,7 +56,7 @@ async function user() {
 
           const response = await fetch(src, {
                headers: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: `OAuth ${token}`
                }
           });
 

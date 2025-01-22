@@ -1,5 +1,5 @@
-const social = "https://social.sicaro.io";
-const social_api = "https://social-server.sicaro.io";
+const social = "https://social.sicar.io";
+const social_api = "https://social-server.sicar.io";
 
 /** @type {HTMLInputElement} */
 const email = window["email"];
@@ -38,7 +38,7 @@ function oauth() {
 
      src.pathname = "/auth/oauth";
 
-     src.searchParams.set("project", "Sicaro");
+     src.searchParams.set("project", "Sicar");
      src.searchParams.set("root", "write");
      src.searchParams.set("permissions", "user:read");
      src.searchParams.set("redirect", location.origin);

@@ -1,6 +1,6 @@
-# Privacy Policy for Sicaro 3D FPS Game Engine
+# Privacy Policy for Sicar 3D FPS Game Engine
 
-This Privacy Policy outlines how Hoodgail Benjamin and the Sicaro game engine platform (collectively, “Sicaro," "we" or "us") collect, use, protect, and disclose information that we gather from you on our website, https://sicaro.io (the “Site”) and through our game engine platform (the “Services”). This policy applies where we are acting as a data controller concerning the personal data of our website visitors and service users.
+This Privacy Policy outlines how Hoodgail Benjamin and the Sicar game engine platform (collectively, “Sicar," "we" or "us") collect, use, protect, and disclose information that we gather from you on our website, https://sicar.io (the “Site”) and through our game engine platform (the “Services”). This policy applies where we are acting as a data controller concerning the personal data of our website visitors and service users.
 
 ## Information We Collect
 
@@ -40,6 +40,6 @@ We may change this Privacy Policy from time to time. If we make changes, we will
 
 ## Contact Us
 
-If you have questions about this Privacy Policy, the data we hold on you, or would like to exercise one of your data protection rights, please do not hesitate to contact us at sicarogame@gmail.com or contact@sicaro.io.
+If you have questions about this Privacy Policy, the data we hold on you, or would like to exercise one of your data protection rights, please do not hesitate to contact us at sicargame@gmail.com or contact@sicar.io.
 
 Last Updated: July 2, 2023

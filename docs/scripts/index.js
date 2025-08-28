@@ -1,5 +1,6 @@
-const social = "https://social.sicar.io";
-const social_api = "https://social-server.sicar.io";
+const social = location.hostname === "localhost" ? "http://localhost:5173" : "https://social.sicar.io";
+const social_api = location.hostname === "localhost" ? "http://localhost:6456" : "https://social-server.sicar.io";
+const matchmaker_api = location.hostname === "localhost" ? "http://localhost:3001" : "http://matchmaker.sicar.io";
 
 /** @type {HTMLInputElement} */
 const email = window["email"];
@@ -64,8 +65,30 @@ async function user() {
 
           username.innerText = "@" + data.username;
 
+          // Display user ID
+          const userIdElement = document.getElementById("userId");
+          if (userIdElement) {
+               userIdElement.innerText = data.id;
+          }
+
+          // Display user avatar
+          const avatarElement = document.getElementById("avatar");
+          if (avatarElement && data.avatar) {
+               avatarElement.src = data.avatar;
+               avatarElement.style.display = "block";
+               avatarElement.onerror = function () {
+                    this.style.display = "none";
+               };
+          }
+
           login.setAttribute("disabled", "true");
           logout.removeAttribute("disabled");
+
+          // Show access request button for logged in users
+          const accessRequestBtn = document.getElementById("accessRequestBtn");
+          if (accessRequestBtn) {
+               accessRequestBtn.style.display = "flex";
+          }
 
      } catch (error) {
 
@@ -140,6 +163,95 @@ async function waitlist() {
      }, 3000);
 
 
+}
+
+function requestAccess() {
+     if (!token) {
+          alert("Please login first");
+          return;
+     }
+
+     openAccessModal();
+}
+
+function openAccessModal() {
+     const modal = document.getElementById("accessModal");
+     modal.classList.add("show");
+
+     // Reset form
+     document.getElementById("accessScope").value = "";
+     document.getElementById("accessReason").value = "";
+
+     // Focus on first field after animation
+     setTimeout(() => {
+          document.getElementById("accessScope").focus();
+     }, 300);
+}
+
+function closeAccessModal() {
+     const modal = document.getElementById("accessModal");
+     modal.classList.remove("show");
+}
+
+// Close modal when clicking outside
+document.addEventListener("DOMContentLoaded", function () {
+     const modal = document.getElementById("accessModal");
+     modal.addEventListener("click", function (e) {
+          if (e.target === modal) {
+               closeAccessModal();
+          }
+     });
+
+     // Close modal with Escape key
+     document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && modal.classList.contains("show")) {
+               closeAccessModal();
+          }
+     });
+});
+
+async function submitAccessRequest() {
+     const scope = document.getElementById("accessScope").value;
+     const reason = document.getElementById("accessReason").value.trim();
+
+     if (!scope) {
+          alert("Please select an access scope");
+          return;
+     }
+
+     const submitBtn = document.getElementById("submitAccessBtn");
+     const originalText = submitBtn.textContent;
+     submitBtn.textContent = "Submitting...";
+     submitBtn.disabled = true;
+
+     try {
+          const response = await fetch(`${matchmaker_api}/api/access-requests`, {
+               method: "POST",
+               headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Social ${token}`
+               },
+               body: JSON.stringify({
+                    requestedScope: scope,
+                    reason: reason || undefined
+               })
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+               closeAccessModal();
+               alert(`Access request submitted successfully! Request ID: ${data.id}`);
+          } else {
+               alert(`Error: ${data.error}`);
+          }
+     } catch (error) {
+          alert("Failed to submit access request. Please try again later.");
+          console.error("Access request error:", error);
+     } finally {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+     }
 }
 
 if (token) {

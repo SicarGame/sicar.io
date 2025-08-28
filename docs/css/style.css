@@ -317,6 +317,16 @@ title-entry {
                     color: #78fffa;
                     background: #78f8ff2c;
                }
+
+               &.access-request {
+                    color: var(--theme-color-light);
+                    background: var(--theme-color);
+
+                    &:hover {
+                         color: white;
+                         background: var(--theme-color-light);
+                    }
+               }
           }
      }
 }
@@ -370,12 +380,34 @@ profile-entry {
      transition: opacity 0.2s linear;
      pointer-events: none;
 
-     .username {
+     .user-info {
           padding: 2vh;
           border-bottom: solid 1px #2d3d3c;
           font-weight: bold;
           font-size: 2vh;
           display: flex;
+          align-items: center;
+          gap: 1.5vh;
+
+          #avatar {
+               width: 4vh;
+               height: 4vh;
+               border-radius: 50%;
+               object-fit: cover;
+               border: 2px solid var(--theme-color);
+          }
+
+          .user-details {
+               display: flex;
+               flex-direction: column;
+               gap: 0.5vh;
+          }
+
+          .user-id {
+               font-size: 1.2vh;
+               color: var(--theme-color-light);
+               font-weight: 600;
+          }
 
           .level {
                display: flex;
@@ -411,6 +443,174 @@ button[disabled] {
      cursor: not-allowed !important
 }
 
+/* Modal Styles */
+.modal-overlay {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.7);
+     backdrop-filter: blur(10px);
+     -webkit-backdrop-filter: blur(10px);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     z-index: 1000;
+     opacity: 0;
+     visibility: hidden;
+     transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.show {
+     opacity: 1;
+     visibility: visible;
+}
+
+.modal-container {
+     background: linear-gradient(135deg, #1a2832, #0f364a);
+     border-radius: 2vh;
+     box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.5), 0px 0px 0px 1px var(--theme-color);
+     min-width: 40vh;
+     max-width: 60vh;
+     transform: scale(0.7) translateY(5vh);
+     transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.modal-overlay.show .modal-container {
+     transform: scale(1) translateY(0);
+}
+
+.modal-header {
+     padding: 2.5vh;
+     border-bottom: 1px solid var(--theme-color);
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+}
+
+.modal-header h3 {
+     margin: 0;
+     font-size: 2.2vh;
+     font-weight: 800;
+     color: white;
+}
+
+.modal-close {
+     background: none;
+     border: none;
+     color: var(--theme-color-light);
+     cursor: pointer;
+     font-size: 1.5vh;
+     padding: 0.8vh;
+     border-radius: 50%;
+     transition: all 0.2s ease;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+.modal-close:hover {
+     background: rgba(255, 255, 255, 0.1);
+     color: white;
+}
+
+.modal-content {
+     padding: 2.5vh;
+}
+
+.form-group {
+     margin-bottom: 2vh;
+}
+
+.form-group label {
+     display: block;
+     margin-bottom: 0.8vh;
+     font-weight: 700;
+     font-size: 1.4vh;
+     color: var(--theme-color-light);
+}
+
+.form-select, .form-textarea {
+     width: 100%;
+     padding: 1.2vh;
+     background: rgba(255, 255, 255, 0.05);
+     border: 1px solid var(--theme-color);
+     border-radius: 1vh;
+     color: white;
+     font-family: 'Nunito Sans', sans-serif;
+     font-size: 1.4vh;
+     outline: none;
+     transition: all 0.3s ease;
+     box-sizing: border-box;
+}
+
+.form-select:focus, .form-textarea:focus {
+     border-color: var(--theme-color-light);
+     background: rgba(255, 255, 255, 0.1);
+     box-shadow: 0 0 0 2px rgba(92, 148, 178, 0.3);
+}
+
+.form-select option {
+     background: var(--background-fill);
+     color: white;
+}
+
+.form-textarea {
+     min-height: 8vh;
+     resize: vertical;
+}
+
+.form-textarea::placeholder {
+     color: rgba(255, 255, 255, 0.5);
+}
+
+.modal-footer {
+     padding: 2vh 2.5vh 2.5vh;
+     display: flex;
+     gap: 1.5vh;
+     justify-content: flex-end;
+}
+
+.modal-btn {
+     padding: 1.2vh 2.5vh;
+     border: none;
+     border-radius: 50vh;
+     font-family: 'Nunito Sans', sans-serif;
+     font-weight: 700;
+     font-size: 1.4vh;
+     cursor: pointer;
+     transition: all 0.2s ease;
+}
+
+.modal-btn.primary {
+     background: linear-gradient(45deg, var(--theme-color), var(--theme-color-light));
+     color: white;
+     box-shadow: 0px 4px 12px var(--shadow-color);
+}
+
+.modal-btn.primary:hover {
+     transform: scale(1.05);
+     box-shadow: 0px 6px 16px var(--shadow-color);
+}
+
+.modal-btn.primary:disabled {
+     opacity: 0.6;
+     cursor: not-allowed;
+     transform: none;
+}
+
+.modal-btn.secondary {
+     background: transparent;
+     color: var(--theme-color-light);
+     border: 1px solid var(--theme-color);
+}
+
+.modal-btn.secondary:hover {
+     background: rgba(255, 255, 255, 0.05);
+     color: white;
+}
+
 @media (max-width: 500px) {
 
      .head {
@@ -435,5 +635,19 @@ button[disabled] {
 
      .buttons {
           flex-wrap: wrap;
+     }
+
+     .modal-container {
+          min-width: 90vw;
+          max-width: 90vw;
+          margin: 2vh;
+     }
+
+     .modal-footer {
+          flex-direction: column-reverse;
+     }
+
+     .modal-btn {
+          width: 100%;
      }
 }

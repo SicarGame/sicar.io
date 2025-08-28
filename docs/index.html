@@ -62,8 +62,12 @@
       </div>
 
       <profile-entry id="profileEntry">
-        <div class="username">
-          <span id="username">@Guest</span>
+        <div class="user-info">
+          <img id="avatar" alt="Avatar" style="display: none;" />
+          <div class="user-details">
+            <span id="username">@Guest</span>
+            <span id="userId" class="user-id"></span>
+          </div>
           <div class="level">
             <span class="label">LVL</span>
             <span>0</span>
@@ -78,6 +82,10 @@
           <button id="logout" disabled class="logout" onclick="removeAccount()">
             <i class="fi fi-br-sign-out-alt"></i>
             <span>Logout</span>
+          </button>
+          <button id="accessRequestBtn" class="access-request" onclick="requestAccess()" style="display: none;">
+            <i class="fi fi-br-unlock"></i>
+            <span>Request Access</span>
           </button>
         </div>
       </profile-entry>
@@ -156,6 +164,39 @@
             </button>
           </div>
         </description-entry>
+      </div>
+    </div>
+
+    <!-- Access Request Modal -->
+    <div id="accessModal" class="modal-overlay">
+      <div class="modal-container">
+        <div class="modal-header">
+          <h3>Request Access</h3>
+          <button class="modal-close" onclick="closeAccessModal()">
+            <i class="fi fi-br-cross"></i>
+          </button>
+        </div>
+        <div class="modal-content">
+          <div class="form-group">
+            <label for="accessScope">Access Scope</label>
+            <select id="accessScope" class="form-select">
+              <option value="">Select access type...</option>
+              <option value="INGAME">In-Game Access</option>
+              <option value="BETA">Beta Access</option>
+              <option value="EARLY_ACCESS">Early Access</option>
+              <option value="TESTING">Testing Access</option>
+              <option value="EDITOR">Editor Access</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="accessReason">Reason (Optional)</label>
+            <textarea id="accessReason" class="form-textarea" placeholder="Please provide a reason for your access request..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="modal-btn secondary" onclick="closeAccessModal()">Cancel</button>
+          <button id="submitAccessBtn" class="modal-btn primary" onclick="submitAccessRequest()">Submit Request</button>
+        </div>
       </div>
     </div>
 

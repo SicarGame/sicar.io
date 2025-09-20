@@ -84,6 +84,10 @@ async function user() {
           login.setAttribute("disabled", "true");
           logout.removeAttribute("disabled");
 
+          // Hide header login CTA when authenticated
+          const headerLogin = document.getElementById("headerLogin");
+          if (headerLogin) headerLogin.style.display = "none";
+
           // Show access request button for logged in users
           const accessRequestBtn = document.getElementById("accessRequestBtn");
           if (accessRequestBtn) {
@@ -167,7 +171,7 @@ async function waitlist() {
 
 function requestAccess() {
      if (!token) {
-          alert("Please login first");
+          profileEntry.classList.toggle('focus')
           return;
      }
 
@@ -256,4 +260,8 @@ async function submitAccessRequest() {
 
 if (token) {
      user();
+} else {
+     // Ensure header login CTA is visible for guests
+     const headerLogin = document.getElementById("headerLogin");
+     if (headerLogin) headerLogin.style.display = "flex";
 }

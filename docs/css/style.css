@@ -296,8 +296,8 @@ title-entry {
 
 .header {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 3vh;
+  top: 4vh;
   margin: 5vh;
   display: flex;
   z-index: 5;
@@ -346,6 +346,121 @@ title-entry {
       }
     }
   }
+}
+
+/* Header visible actions */
+.header-actions {
+  display: flex;
+  gap: 1vh;
+  align-items: center;
+}
+.header .header-login,
+.header .header-play {
+  display: flex;
+  align-items: center;
+  gap: 1vh;
+  padding: 1.2vh 2vh;
+  border-radius: 50vh;
+  border: 1px solid var(--theme-color);
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  cursor: pointer;
+  transition:
+    transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 2.275),
+    background 0.2s ease,
+    border-color 0.2s ease;
+  box-shadow: 0px 8px 14px var(--shadow-color);
+}
+.header .header-play {
+  background: linear-gradient(
+    45deg,
+    var(--theme-color),
+    var(--theme-color-light)
+  );
+  border: none;
+}
+.header .header-login:hover,
+.header .header-play:hover {
+  transform: scale(1.05);
+}
+
+/* Open Alpha banner */
+.alpha-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 1.4vh 2vh;
+  background: linear-gradient(90deg, #2b1408, #6a2c10 60%, #2b1408);
+  border-bottom: 1px solid rgba(255, 168, 123, 0.35);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+  z-index: 10;
+}
+.alpha-banner .alpha-content {
+  display: flex;
+  align-items: center;
+  gap: 1.4vh;
+  max-width: 120vh;
+  margin: 0 auto;
+}
+.alpha-banner .badge {
+  background: var(--theme-color);
+  color: white;
+  font-weight: 900;
+  font-size: 1.3vh;
+  padding: 0.6vh 1.2vh;
+  border-radius: 99vh;
+  letter-spacing: 0.04em;
+  box-shadow: 0 6px 12px var(--shadow-color);
+  display: flex;
+  white-space: nowrap;
+}
+.alpha-banner .message {
+  color: #ffd9c6;
+  font-weight: 800;
+  font-size: 1.6vh;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.alpha-banner .cta {
+  margin-left: auto;
+  display: flex;
+  gap: 1vh;
+}
+.alpha-banner .banner-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.8vh;
+  padding: 0.9vh 1.6vh;
+  border-radius: 99vh;
+  border: 1px solid var(--theme-color);
+  background: rgba(0, 0, 0, 0.25);
+  color: white;
+  cursor: pointer;
+  transition:
+    transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 2.275),
+    background 0.2s ease;
+}
+.alpha-banner .banner-btn.primary {
+  background: linear-gradient(
+    45deg,
+    var(--theme-color),
+    var(--theme-color-light)
+  );
+  border: none;
+}
+.alpha-banner .banner-btn:hover {
+  transform: scale(1.05);
+}
+
+.banner-btn {
+  white-space: nowrap;
+}
+
+.banner-btn span {
+  white-space: nowrap;
+  display: flex;
 }
 
 .profile {
@@ -681,5 +796,20 @@ button[disabled] {
 
   .modal-btn {
     width: 100%;
+  }
+
+  .alpha-banner .alpha-content {
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 90vw;
+    gap: 1vh;
+  }
+  .alpha-banner .cta {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .header {
+    margin-top: 13vh;
   }
 }

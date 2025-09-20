@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Sicar - Coming soon</title>
+    <title>Sicar — Browser FPS | Open Alpha Now | No Download</title>
     <!-- Viewport meta tag for responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Description meta tag -->
     <meta
       name="description"
-      content="Browser Multiplayer FPS game // Game engine"
+      content="Fast multiplayer FPS that runs fully in your browser. Open Alpha live in our Discord. Play instantly at play.sicar.io — no download required."
     />
 
     <!-- Keywords meta tag  -->
@@ -22,21 +22,21 @@
     <meta name="author" content="Hoodgail Benjamin" />
 
     <!-- Open Graph meta tags for social media sharing -->
-    <meta property="og:title" content="Sicar - Coming soon" />
+    <meta property="og:title" content="Sicar — Browser FPS | Open Alpha Now" />
     <meta
       property="og:description"
-      content="Browser Multiplayer FPS game // Game engine"
+      content="Fast multiplayer FPS that runs fully in your browser. Open Alpha live in our Discord. Play instantly at play.sicar.io — no download required."
     />
     <meta property="og:image" content="https://sicar.io/assets/image.png" />
     <meta property="og:url" content="https://sicar.io" />
     <meta property="og:type" content="website" />
 
     <!-- Twitter Card meta tags for Twitter sharing-->
-    <meta name="twitter:card" content="https://sicar.io/assets/image.png" />
-    <meta name="twitter:title" content="Sicar - Coming soon" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sicar — Browser FPS | Open Alpha Now" />
     <meta
       name="twitter:description"
-      content="Browser Multiplayer FPS game // Game engine"
+      content="Fast multiplayer FPS that runs fully in your browser. Open Alpha live in our Discord. Play instantly at play.sicar.io — no download required."
     />
     <meta name="twitter:image" content="https://sicar.io/assets/image.png" />
 
@@ -56,14 +56,50 @@
 
     <script></script>
 
+    <!-- Open Alpha Banner -->
+    <div class="alpha-banner" role="region" aria-label="Open Alpha">
+      <div class="alpha-content">
+        <span class="badge">Open Alpha</span>
+        <span class="message"
+          >Join our Discord to get access and try Sicar — fully browser based,
+          no download needed. Visit <b>play.sicar.io</b>; access required to
+          queue.</span
+        >
+        <div class="cta">
+          <button
+            class="banner-btn primary"
+            onclick="window.open('https:\/\/discord.gg\/MpygB8FVyQ')"
+          >
+            <i class="fi fi-brands-discord"></i>
+            <span>Join Discord</span>
+          </button>
+          <button
+            class="banner-btn ghost"
+            onclick="window.open('https:\/\/play.sicar.io')"
+          >
+            <i class="fi fi-br-play-alt"></i>
+            <span>Play Now</span>
+          </button>
+          <button class="banner-btn ghost" onclick="requestAccess()">
+            <i class="fi fi-br-unlock"></i>
+            <span>Request Access</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div class="header">
-      <div class="profile" onclick="profileEntry.classList.toggle('focus')">
+      <div
+        class="profile"
+        id="profileButton"
+        onclick="profileEntry.classList.toggle('focus')"
+      >
         <i class="fi fi-sr-user"></i>
       </div>
 
       <profile-entry id="profileEntry">
         <div class="user-info">
-          <img id="avatar" alt="Avatar" style="display: none;" />
+          <img id="avatar" alt="Avatar" style="display: none" />
           <div class="user-details">
             <span id="username">@Guest</span>
             <span id="userId" class="user-id"></span>
@@ -83,7 +119,12 @@
             <i class="fi fi-br-sign-out-alt"></i>
             <span>Logout</span>
           </button>
-          <button id="accessRequestBtn" class="access-request" onclick="requestAccess()" style="display: none;">
+          <button
+            id="accessRequestBtn"
+            class="access-request"
+            onclick="requestAccess()"
+            style="display: none"
+          >
             <i class="fi fi-br-unlock"></i>
             <span>Request Access</span>
           </button>
@@ -125,15 +166,16 @@
             </div>
           </div>
         </title-entry>
+
         <description-entry>
           <div class="text title">
-            <span> Browser Multiplayer FPS game // Game engine </span>
+            <span> Fast Multiplayer FPS — In Your Browser </span>
           </div>
           <div class="text">
             <span>
-              Sicar is a multiplayer FPS game running in the browser. It is
-              powered by a custom game engine built on top of WebGL and
-              WebSocket.
+              Open Alpha is live in Discord. Play instantly at
+              <b>play.sicar.io</b> — no download required. Access is needed to
+              queue for matches.
             </span>
           </div>
           <div class="buttons">
@@ -190,12 +232,24 @@
           </div>
           <div class="form-group">
             <label for="accessReason">Reason (Optional)</label>
-            <textarea id="accessReason" class="form-textarea" placeholder="Please provide a reason for your access request..."></textarea>
+            <textarea
+              id="accessReason"
+              class="form-textarea"
+              placeholder="Please provide a reason for your access request..."
+            ></textarea>
           </div>
         </div>
         <div class="modal-footer">
-          <button class="modal-btn secondary" onclick="closeAccessModal()">Cancel</button>
-          <button id="submitAccessBtn" class="modal-btn primary" onclick="submitAccessRequest()">Submit Request</button>
+          <button class="modal-btn secondary" onclick="closeAccessModal()">
+            Cancel
+          </button>
+          <button
+            id="submitAccessBtn"
+            class="modal-btn primary"
+            onclick="submitAccessRequest()"
+          >
+            Submit Request
+          </button>
         </div>
       </div>
     </div>

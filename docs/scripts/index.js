@@ -2,30 +2,21 @@ const social = location.hostname === "localhost" ? "http://localhost:5173" : "ht
 const social_api = location.hostname === "localhost" ? "http://localhost:6456" : "https://social-server.sicar.io";
 const matchmaker_api = location.hostname === "localhost" ? "http://localhost:3001" : "https://matchmaker.sicar.io";
 
-/** @type {HTMLInputElement} */
-const email = window["email"];
-
-/** @type {HTMLButtonElement} */
-const submit = window["submit"];
-
-
 const searchParams = new URLSearchParams(location.search);
 
 if (searchParams.has("token")) localStorage.setItem("token", searchParams.get("token"));
 if (searchParams.has("token_expires")) localStorage.setItem("token_expires", searchParams.get("token_expires"));
 
-Expiration: {
+// Token expiration check
+{
      const expires = localStorage.getItem("token_expires");
-
-     if (!expires) break Expiration;
-
-     const date = new Date(expires);
-
-     if (date < new Date()) {
-          localStorage.removeItem("token");
-          localStorage.removeItem("token_expires");
+     if (expires) {
+          const date = new Date(expires);
+          if (date < new Date()) {
+               localStorage.removeItem("token");
+               localStorage.removeItem("token_expires");
+          }
      }
-
 }
 
 // Remove search from URL
@@ -33,28 +24,35 @@ history.replaceState({}, document.title, location.pathname);
 
 const token = localStorage.getItem("token");
 
+function toggleProfile() {
+     const profileEntry = document.getElementById("profileEntry");
+     profileEntry.classList.toggle("show");
+}
+
+// Close profile when clicking outside
+document.addEventListener("click", function (e) {
+     const profileContainer = document.querySelector(".profile-container");
+     const profileEntry = document.getElementById("profileEntry");
+     if (profileContainer && !profileContainer.contains(e.target)) {
+          profileEntry.classList.remove("show");
+     }
+});
+
 function oauth() {
-
      const src = new URL(social);
-
      src.pathname = "/auth/oauth";
-
      src.searchParams.set("project", "Sicar");
      src.searchParams.set("root", "write");
      src.searchParams.set("permissions", "user:read");
-     src.searchParams.set("redirect", location.origin);
-
+     src.searchParams.set("redirect", location.origin + location.pathname);
      location.href = src.toString();
 }
 
 async function user() {
-
      const src = new URL(social_api);
-
      src.pathname = "/api/users/me";
 
      try {
-
           const response = await fetch(src, {
                headers: {
                     Authorization: `OAuth ${token}`
@@ -63,7 +61,7 @@ async function user() {
 
           const data = await response.json();
 
-          username.innerText = "@" + data.username;
+          document.getElementById("username").innerText = "@" + data.username;
 
           // Display user ID
           const userIdElement = document.getElementById("userId");
@@ -81,12 +79,8 @@ async function user() {
                };
           }
 
-          login.setAttribute("disabled", "true");
-          logout.removeAttribute("disabled");
-
-          // Hide header login CTA when authenticated
-          const headerLogin = document.getElementById("headerLogin");
-          if (headerLogin) headerLogin.style.display = "none";
+          document.getElementById("login").setAttribute("disabled", "true");
+          document.getElementById("logout").removeAttribute("disabled");
 
           // Show access request button for logged in users
           const accessRequestBtn = document.getElementById("accessRequestBtn");
@@ -95,86 +89,22 @@ async function user() {
           }
 
      } catch (error) {
-
           localStorage.removeItem("token");
           localStorage.removeItem("token_expires");
-
      }
 }
 
 async function removeAccount() {
-
      localStorage.removeItem("token");
      localStorage.removeItem("token_expires");
-
-     location.href = location.origin;
-}
-
-/** @type {Timer} */
-let timeout;
-
-async function waitlist() {
-
-     if (timeout) clearTimeout(timeout);
-
-     const url = new URL("https://api.getwaitlist.com/");
-
-     url.pathname = "/api/v1/signup";
-
-     const body = {
-          email: email.value,
-          waitlist_id: "16385"
-     }
-
-     const request = new Request(url, {
-          method: "POST",
-          headers: {
-               "Content-Type": "application/json"
-          },
-          body: JSON.stringify(body)
-     });
-
-     email.value = "";
-
-     submit.textContent = "Loading...";
-
-     try {
-
-          const response = await fetch(request);
-
-          const data = await response.json();
-
-          if (data.error) {
-
-               alert(data.error);
-
-          } else {
-
-               submit.textContent = "Thank you!";
-          }
-
-     } catch (error) {
-
-          submit.textContent = ("An error occurred, please try again later.");
-     }
-
-
-
-     timeout = setTimeout(() => {
-
-          submit.textContent = "Submit";
-
-     }, 3000);
-
-
+     location.href = location.origin + location.pathname;
 }
 
 function requestAccess() {
      if (!token) {
-          profileEntry.classList.toggle('focus')
+          toggleProfile();
           return;
      }
-
      openAccessModal();
 }
 
@@ -260,8 +190,57 @@ async function submitAccessRequest() {
 
 if (token) {
      user();
-} else {
-     // Ensure header login CTA is visible for guests
-     const headerLogin = document.getElementById("headerLogin");
-     if (headerLogin) headerLogin.style.display = "flex";
+}
+
+// Waitlist functionality
+function toggleWaitlist() {
+     const waitlistForm = document.getElementById("waitlistForm");
+     waitlistForm.classList.toggle("show");
+     if (waitlistForm.classList.contains("show")) {
+          document.getElementById("waitlistEmail").focus();
+     }
+}
+
+let waitlistTimeout;
+async function waitlist() {
+     if (waitlistTimeout) clearTimeout(waitlistTimeout);
+
+     const emailInput = document.getElementById("waitlistEmail");
+     const submitBtn = document.getElementById("waitlistSubmit");
+
+     const url = new URL("https://api.getwaitlist.com/");
+     url.pathname = "/api/v1/signup";
+
+     const body = {
+          email: emailInput.value,
+          waitlist_id: "16385"
+     };
+
+     const request = new Request(url, {
+          method: "POST",
+          headers: {
+               "Content-Type": "application/json"
+          },
+          body: JSON.stringify(body)
+     });
+
+     emailInput.value = "";
+     submitBtn.textContent = "Loading...";
+
+     try {
+          const response = await fetch(request);
+          const data = await response.json();
+
+          if (data.error) {
+               alert(data.error);
+          } else {
+               submitBtn.textContent = "Thank you!";
+          }
+     } catch (error) {
+          submitBtn.textContent = "An error occurred, please try again later.";
+     }
+
+     waitlistTimeout = setTimeout(() => {
+          submitBtn.textContent = "Submit";
+     }, 3000);
 }

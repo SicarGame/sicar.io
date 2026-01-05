@@ -54,7 +54,7 @@ body {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-mSyXfCYjLuEyEqTwpQ1LVylriu3wCE.png")
+  background: url("../img/hero-bg.png")
     center/cover no-repeat;
   filter: brightness(0.4) saturate(0.8);
 }

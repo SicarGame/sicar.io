@@ -1,6 +1,6 @@
 const social = location.hostname === "localhost" ? "http://localhost:5173" : "https://social.sicar.io";
 const social_api = location.hostname === "localhost" ? "http://localhost:6456" : "https://social-server.sicar.io";
-const matchmaker_api = location.hostname === "localhost" ? "http://localhost:3001" : "https://matchmaker.sicar.io";
+const matchmaker_api = location.hostname === "localhost" ? "http://localhost:3001" : "https://atlas.sicar.io";
 
 const searchParams = new URLSearchParams(location.search);
 

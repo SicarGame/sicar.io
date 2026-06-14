@@ -1,0 +1,313 @@
+/* ============================================================
+   SICAR — subpage styles (privacy / terms / support / press)
+   Article & prose typography layered on top of css/style.css
+   ============================================================ */
+
+.page-shell {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Slim subpage nav (no anchors back into the landing) --- */
+.page-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 3rem;
+  background: rgba(10, 10, 10, 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(180, 80, 21, 0.25);
+}
+
+.page-nav .nav-logo {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 900;
+  font-size: 1.25rem;
+  letter-spacing: 0.18em;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.page-nav .nav-logo span {
+  color: var(--accent-light);
+}
+
+/* --- Page header strip --- */
+.page-header {
+  position: relative;
+  padding: 5rem 1.5rem 3rem;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 0%, rgba(180, 80, 21, 0.18), transparent 70%),
+    var(--bg-dark);
+  border-bottom: 1px solid rgba(180, 80, 21, 0.18);
+  overflow: hidden;
+}
+
+.page-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 2px,
+    rgba(0, 0, 0, 0.12) 4px
+  );
+  pointer-events: none;
+}
+
+.page-kicker {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 1rem;
+}
+
+.page-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.page-updated {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* --- Article column --- */
+.page-content {
+  flex: 1;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 5rem;
+}
+
+.page-content h2 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin: 2.75rem 0 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent);
+}
+
+.page-content h2:first-child {
+  margin-top: 0;
+}
+
+.page-content h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  margin: 2rem 0 0.75rem;
+}
+
+.page-content p {
+  font-size: 0.975rem;
+  line-height: 1.8;
+  color: #c8c8c8;
+  margin: 0 0 1.25rem;
+}
+
+.page-content ol,
+.page-content ul {
+  margin: 0 0 1.5rem;
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.page-content li {
+  font-size: 0.975rem;
+  line-height: 1.7;
+  color: #c8c8c8;
+}
+
+.page-content li::marker {
+  color: var(--accent-light);
+  font-weight: 700;
+}
+
+.page-content a {
+  color: var(--accent-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 168, 123, 0.4);
+  transition: text-decoration-color 0.2s ease;
+}
+
+.page-content a:hover {
+  text-decoration-color: var(--accent-light);
+}
+
+.page-content strong {
+  color: var(--text-primary);
+}
+
+/* --- Support page blocks --- */
+.support-channels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0 1rem;
+}
+
+.support-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background: var(--bg-surface);
+  border: 1px solid rgba(180, 80, 21, 0.25);
+  text-decoration: none !important;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.support-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.support-card .channel-name {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.support-card .channel-desc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.support-card.primary {
+  border-color: var(--accent);
+  background: linear-gradient(160deg, rgba(180, 80, 21, 0.16), var(--bg-surface) 60%);
+}
+
+/* FAQ */
+.faq-item {
+  margin: 0 0 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-surface);
+}
+
+.faq-item summary {
+  padding: 1.1rem 1.25rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  position: relative;
+  padding-right: 3rem;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "Orbitron", sans-serif;
+  color: var(--accent-light);
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.faq-item[open] summary::after {
+  content: "−";
+}
+
+.faq-item .faq-body {
+  padding: 0 1.25rem 1.25rem;
+}
+
+.faq-item .faq-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Press "coming soon" --- */
+.press-soon {
+  margin: 2.5rem 0;
+  padding: 3rem 2rem;
+  text-align: center;
+  border: 1px dashed rgba(180, 80, 21, 0.45);
+  background:
+    radial-gradient(ellipse 70% 100% at 50% 0%, rgba(180, 80, 21, 0.1), transparent 70%),
+    var(--bg-surface);
+}
+
+.press-soon .soon-badge {
+  display: inline-block;
+  padding: 0.4rem 1.1rem;
+  margin-bottom: 1.25rem;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  border: 1px solid rgba(180, 80, 21, 0.5);
+  background: rgba(180, 80, 21, 0.12);
+}
+
+.press-soon p {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Buttons reused on subpages --- */
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 640px) {
+  .page-nav {
+    padding: 1rem 1.25rem;
+  }
+
+  .page-header {
+    padding: 3.5rem 1.25rem 2.5rem;
+  }
+
+  .page-content {
+    padding: 2.5rem 1.25rem 4rem;
+  }
+}

@@ -297,6 +297,135 @@ body {
   background: rgba(180, 80, 21, 0.1);
 }
 
+/* Contract Address box */
+.ca-box {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+  padding: 0.7rem 1rem 0.7rem 1.15rem;
+  max-width: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(180, 80, 21, 0.12),
+    rgba(17, 17, 17, 0.6) 65%
+  );
+  border: 1px solid rgba(255, 168, 123, 0.28);
+  color: var(--text-primary);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% 100%,
+    10px 100%,
+    0 calc(100% - 10px)
+  );
+  backdrop-filter: blur(6px);
+}
+
+.ca-box::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent);
+}
+
+.ca-box:hover {
+  border-color: var(--accent-light);
+  background: linear-gradient(
+    135deg,
+    rgba(180, 80, 21, 0.22),
+    rgba(17, 17, 17, 0.6) 65%
+  );
+  box-shadow: 0 0 24px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.ca-label {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-light);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ca-value {
+  font-family: "JetBrains Mono", "Courier New", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.ca-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  color: var(--accent-light);
+  border-left: 1px solid rgba(255, 168, 123, 0.2);
+  padding-left: 0.7rem;
+  box-sizing: content-box;
+}
+
+.ca-action .ca-icon-check {
+  display: none;
+  color: #46d17b;
+}
+
+.ca-box.copied {
+  border-color: rgba(70, 209, 123, 0.6);
+}
+
+.ca-box.copied::before {
+  background: #46d17b;
+}
+
+.ca-box.copied .ca-label {
+  color: #46d17b;
+}
+
+.ca-box.copied .ca-action {
+  color: #46d17b;
+  border-left-color: rgba(70, 209, 123, 0.3);
+}
+
+.ca-box.copied .ca-icon-copy {
+  display: none;
+}
+
+.ca-box.copied .ca-icon-check {
+  display: inline;
+}
+
+@media (max-width: 600px) {
+  .ca-box {
+    width: 100%;
+  }
+  .ca-value {
+    font-size: 0.7rem;
+  }
+}
+
 /* Status badge */
 .status-badge {
   display: inline-flex;

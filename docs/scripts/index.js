@@ -192,42 +192,6 @@ if (token) {
      user();
 }
 
-// Contract Address copy-to-clipboard
-let caCopyTimeout;
-async function copyContractAddress() {
-     const box = document.getElementById("caBox");
-     const label = box?.querySelector(".ca-label");
-     const value = document.getElementById("caValue")?.textContent?.trim();
-     if (!box || !value) return;
-
-     try {
-          if (navigator.clipboard?.writeText) {
-               await navigator.clipboard.writeText(value);
-          } else {
-               // Fallback for non-secure contexts / older browsers
-               const tmp = document.createElement("textarea");
-               tmp.value = value;
-               tmp.style.position = "fixed";
-               tmp.style.opacity = "0";
-               document.body.appendChild(tmp);
-               tmp.select();
-               document.execCommand("copy");
-               document.body.removeChild(tmp);
-          }
-
-          if (label) label.textContent = "Copied to clipboard";
-          box.classList.add("copied");
-
-          if (caCopyTimeout) clearTimeout(caCopyTimeout);
-          caCopyTimeout = setTimeout(() => {
-               box.classList.remove("copied");
-               if (label) label.textContent = "Contract Address";
-          }, 2000);
-     } catch (error) {
-          if (label) label.textContent = "Press Ctrl+C to copy";
-     }
-}
-
 // Waitlist functionality
 function toggleWaitlist() {
      const waitlistForm = document.getElementById("waitlistForm");
